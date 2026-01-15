@@ -12,7 +12,7 @@ export default function Website() {
   const [isTermsOpen, setIsTermsOpen] = useState(false);
 
   // YOUR ACTUAL LINKS
-  const DOWNLOAD_LINK = "https://github.com/Saivamshi-git/ElectronWebPage/releases/download/v1.0.0/electron.zip";
+  const DOWNLOAD_LINK = "https://github.com/Saivamshi-git/ElectronWebPage/releases/download/v1.0.0/Electron_beta.zip";
   const GITHUB_PROFILE = "https://github.com/Saivamshi-git";
   const LINKEDIN_PROFILE = "https://www.linkedin.com/in/saivamshi6220";
 
