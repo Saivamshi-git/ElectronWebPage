@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 // IMPORT YOUR SUPABASE CLIENT
 import { supabase } from './lib/supabaseClient'; 
-import { Download, Shield, Cpu, Terminal, Github, Zap, Code, Layout, Sparkles, X, CheckCircle, Mail, ShieldCheck, Loader2, ArrowRight, FileText, AlertTriangle, Check, Gavel, Banknote, ServerCrash, Linkedin } from 'lucide-react';
+import { 
+  Download, Shield, Cpu, Terminal, Github, Zap, Code, Layout, 
+  Sparkles, X, CheckCircle, Mail, ShieldCheck, Loader2, ArrowRight, 
+  AlertTriangle, Check, Gavel, Banknote, ServerCrash, Linkedin 
+} from 'lucide-react';
 
 export default function Website() {
   
@@ -35,7 +39,7 @@ export default function Website() {
             <span>ELECTRON <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-sky-400 ml-2">BETA</span></span>
           </div>
           
-          {/* --- TOP RIGHT CONTENT ADDED HERE --- */}
+          {/* --- TOP RIGHT CONTENT --- */}
           <div className="flex gap-5 items-center">
              <a href={GITHUB_PROFILE} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors transform hover:scale-110 duration-200">
                <Github className="w-5 h-5" />
@@ -171,7 +175,14 @@ export default function Website() {
 
 // --- SUBCOMPONENTS ---
 
-function Feature({ icon, title, desc }) {
+// 1. Feature Interface & Component
+interface FeatureProps {
+  icon: ReactNode;
+  title: string;
+  desc: string;
+}
+
+function Feature({ icon, title, desc }: FeatureProps) {
   return (
     <div className="group p-6 rounded-2xl bg-[#11161d] border border-white/5 hover:border-sky-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-sky-900/10 hover:-translate-y-1">
       <div className="mb-4 bg-[#1a212a] w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -183,6 +194,7 @@ function Feature({ icon, title, desc }) {
   );
 }
 
+// 2. Typewriter Effect (No props needed)
 function TypewriterEffect() {
   return (
     <div className="space-y-2">
@@ -203,8 +215,12 @@ function TypewriterEffect() {
   );
 }
 
-// --- TERMS COMPONENT ---
-function TermsModal({ onClose }) {
+// 3. Terms Modal Interface & Component
+interface TermsModalProps {
+  onClose: () => void;
+}
+
+function TermsModal({ onClose }: TermsModalProps) {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
@@ -316,8 +332,14 @@ function TermsModal({ onClose }) {
   );
 }
 
-// --- DOWNLOAD MODAL ---
-function DownloadModal({ onClose, onOpenTerms, downloadLink }) {
+// 4. Download Modal Interface & Component
+interface DownloadModalProps {
+  onClose: () => void;
+  onOpenTerms: () => void;
+  downloadLink: string;
+}
+
+function DownloadModal({ onClose, onOpenTerms, downloadLink }: DownloadModalProps) {
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
